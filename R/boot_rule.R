@@ -56,9 +56,10 @@ boot_rule.add_dummies <- function(
   
   # full data!
   data <- eval(attr(object, which = 'data.name', exact = TRUE), envir = parent.frame())
-  b_ <- bootid(n = .row_names_info(data, type = 2L), R = R) # \eqn{R} copies of 'integer' vectors
   fomd <- attr(object, which = 'formula', exact = TRUE)
   start.model <- attr(object, which = 'start.model', exact = TRUE)
+  
+  b_ <- bootid(n = .row_names_info(data, type = 2L), R = R) # \eqn{R} copies of 'integer' vectors
   
   rules_bt <- mclapply(b_, mc.cores = mc.cores, FUN = function(b) { # (b = b_[[1L]])
     b_data <- data[b, , drop = FALSE]

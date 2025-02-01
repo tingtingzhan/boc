@@ -90,27 +90,13 @@ add_dummies <- function(
   
   cf_ <- tail(newmod$coefficients, n = length(nms))
   if (any(dupX)) cf_ <- cf_[ids] # to expand `cf_`
+  attr(rule, which = 'effsize') <- cf_ # for [boot_optimism.add_dummies]
   
-  
-  if (FALSE) {
-    attr(cf_, which = 'formula') <- formula
-    attr(cf_, which = 'data.name') <- data.name
-    attr(cf_, which = 'model') <- newmod
-    attr(cf_, which = 'start.model') <- start.model
-    attr(cf_, which = 'rule') <- rule
-    class(cf_) <- 'add_dummies'
-    return(cf_)
-  } # old return system
-  
-  attr(rule, which = 'effsize') <- cf_
-  
-  # below: used for ???
-  attr(rule, which = 'formula') <- formula
-  attr(rule, which = 'data.name') <- data.name
-  attr(rule, which = 'model') <- newmod
-  attr(rule, which = 'start.model') <- start.model
-  # end of used for ???
-  
+  attr(rule, which = 'formula') <- formula # for [boot_rule.add_dummies]
+  attr(rule, which = 'data.name') <- data.name # for [boot_rule.add_dummies]
+  attr(rule, which = 'model') <- newmod # for [boc.add_dummies]
+  attr(rule, which = 'start.model') <- start.model # for [boot_rule.add_dummies]
+
   class(rule) <- c('add_dummies', class(rule))
   return(rule)
   
