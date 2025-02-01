@@ -67,20 +67,17 @@
 #' m1
 #' sapply(m1, FUN = get_cutoff) # invokes `maxEff::get_cutoff.rpart1`
 #' 
-#' set.seed(143); m2 = m0 |>
-#'  add_dummies(formula = ~ kappa + lambda) |> 
+#' set.seed(143); m2 = m1 |>
 #'  boot_rule(R = 30L) # small `R` to save CRAN check time
 #' stopifnot(length(m2) == 30L)
 #' m2[[1L]] # rule of 1st bootstrap
 #' do.call(rbind, args = lapply(m2, FUN = function(i) sapply(i, FUN = get_cutoff)))
 #' 
-#' set.seed(143); m3 = m0 |>
-#'  add_dummies(formula = ~ kappa + lambda) |> 
+#' set.seed(143); m3 = m1 |>
 #'  boot_optimism(R = 30L)
 #' head(m3) # just a matrix
 #'  
-#' set.seed(143); m4 = m0 |>
-#'  add_dummies(formula = ~ kappa + lambda) |> 
+#' set.seed(143); m4 = m1 |>
 #'  boc(R = 30L)
 #' summary(m4)
 #' 
