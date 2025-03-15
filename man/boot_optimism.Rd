@@ -16,12 +16,12 @@ boot_optimism(object, ...)
 \arguments{
 \item{object}{the apparent model}
 
-\item{...}{additional parameters of function \link{boot_rule}}
+\item{...}{additional parameters of function \code{\link[=boot_rule]{boot_rule()}}}
 
 \item{mc.cores}{\link[base]{integer} scalar, see function \link[parallel]{mclapply}}
 }
 \value{
-Function \link{boot_optimism.add_dummies} returns an \eqn{R\times k} \link[base]{double} \link[base]{matrix}.
+Function \code{\link[=boot_optimism.add_dummies]{boot_optimism.add_dummies()}} returns an \eqn{R\times k} \link[base]{double} \link[base]{matrix}.
 }
 \description{
 Bootstrap-Based Optimism

@@ -12,7 +12,7 @@
 \item{...}{additional parameters, currently not in use}
 }
 \value{
-Function \link{print.add_dummies} does not have a returned value
+Function \code{\link[=print.add_dummies]{print.add_dummies()}} does not have a returned value
 }
 \description{
 print.add_dummies

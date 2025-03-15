@@ -22,25 +22,27 @@ to be dichotomized}
 
 \item{data}{(optional) \link[base]{data.frame}}
 
-\item{rule}{..}
+\item{rule}{a \link[stats]{listof} partitioning rules,
+default is the returned value of function \code{\link[=rpart1.]{rpart1.()}}}
 
 \item{...}{additional parameters, currently not in use}
 }
 \value{
-Function \link{add_dummies} returns an object of class \code{'add_dummies'}.
+Function \code{\link[=add_dummies]{add_dummies()}} returns an object of class \code{'add_dummies'}.
 }
 \description{
 add_dummies
 }
 \details{
 First, obtain the dichotomizing rules \eqn{\mathbf{\mathcal{D}}} of predictors \eqn{x_1,\cdots,x_k} based on
-response \eqn{y} (via \link[maxEff]{rpart1}).
+response \eqn{y} (via function \code{\link[=rpart1.]{rpart1.()}}).
 
-Then, \link[stats]{update} previous multivariable regression \code{start.model}
+Then, \link[stats]{update} the starting multivariable regression \code{start.model}
 with dichotomized predictors \eqn{\left(\tilde{x}_1,\cdots,\tilde{x}_k\right) = \mathcal{D}\left(x_1,\cdots,x_k\right)}.
 }
 \note{
-Different from \code{?maxEff::add_dummy}.  Function \link{add_dummies} adds \emph{multiple} dichotomized predictors.
+Different from function \link[maxEff]{add_dummy},
+function \code{\link[=add_dummies]{add_dummies()}} adds \emph{multiple} dichotomized predictors.
 }
 \examples{
 # see ?boc

@@ -5,7 +5,7 @@
 #' 
 #' @param mc.cores \link[base]{integer} scalar, see function \link[parallel]{mclapply}
 #' 
-#' @param ... additional parameters of function [boot_rule]
+#' @param ... additional parameters of function [boot_rule()]
 #' 
 #' @details
 #' Bootstrap-based optimism
@@ -35,7 +35,7 @@
 #' }
 #' 
 #' @returns 
-#' Function [boot_optimism.add_dummies] returns an \eqn{R\times k} \link[base]{double} \link[base]{matrix}.
+#' Function [boot_optimism.add_dummies()] returns an \eqn{R\times k} \link[base]{double} \link[base]{matrix}.
 #'
 #' @references 
 #' Ewout W. Steyerberg (2009) Clinical Prediction Models.
@@ -48,7 +48,7 @@
 #' 
 #' @name boot_optimism
 #' @export
-boot_optimism <- function(object, ...) UseMethod('boot_optimism')
+boot_optimism <- function(object, ...) UseMethod(generic = 'boot_optimism')
 
 
 #' @rdname boot_optimism

@@ -12,17 +12,12 @@ bootid(n, R)
 \item{R}{positive \link[base]{integer} scalar, number of bootstrap replicates \eqn{R}}
 }
 \value{
-Function \link{bootid} returns a length-\eqn{R} \link[base]{list} of
+Function \code{\link[=bootid]{bootid()}} returns a length-\eqn{R} \link[stats]{listof}
 positive \link[base]{integer} \link[base]{vector}s.
 Each element is the length-\eqn{n} indices of each bootstrap sample.
 }
 \description{
-Generate a series of \link[boot]{boot}strap indices.
-}
-\details{
-Function \link{bootid} generates the same bootstrap indices as
-those generated from the default options of function \link[boot]{boot}
-(i.e., \code{sim = 'ordinary'} and \code{m = 0}).
+To generate a \link[stats]{listof} \link[boot]{boot}strap indices.
 }
 \examples{
 set.seed(1345); (bt1 = boot::boot(data = 1:10, statistic = function(data, ind) ind, R = 3L)[['t']])
@@ -30,6 +25,9 @@ set.seed(1345); (bt2 = bootid(10L, R = 3L))
 stopifnot(identical(c(t(bt1)), unlist(bt2)))
 }
 \seealso{
-Function \link{bootid} is inspired by functions \code{boot:::index.array} and \code{boot:::ordinary.array}.
+Function \code{\link[=bootid]{bootid()}} generates \link[base]{identical} bootstrap indices as
+those generated from the default options of function \link[boot]{boot}
+(i.e., with parameters \code{sim = 'ordinary'} and \code{m = 0}),
+see more in functions \code{boot:::index.array} and \code{boot:::ordinary.array}.
 }
 \keyword{internal}

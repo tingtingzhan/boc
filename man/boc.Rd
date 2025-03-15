@@ -12,18 +12,18 @@ boc(object, ...)
 \arguments{
 \item{object}{the apparent model}
 
-\item{...}{additional parameters of function \link{boot_optimism}}
+\item{...}{additional parameters of function \code{\link[=boot_optimism]{boot_optimism()}}}
 
-\item{bo}{boot strap optimism, returned value from function \link{boot_optimism}}
+\item{bo}{boot strap optimism, returned value from function \code{\link[=boot_optimism]{boot_optimism()}}}
 }
 \value{
-Function \link{boc} returns a regression model.
+Function \code{\link[=boc]{boc()}} returns a regression model.
 }
 \description{
 Multivariable regression model with bootstrap-based optimism correction on the dichotomized predictors.
 }
 \details{
-Function \link{boc} obtains a multivariable regression model with
+Function \code{\link[=boc]{boc()}} obtains a multivariable regression model with
 bootstrap-based optimism correction on the dichotomized predictors.
 Specifically,
 

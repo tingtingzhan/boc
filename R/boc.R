@@ -8,13 +8,13 @@
 #' 
 #' @param object the apparent model
 #' 
-#' @param bo boot strap optimism, returned value from function [boot_optimism]
+#' @param bo boot strap optimism, returned value from function [boot_optimism()]
 #' 
-#' @param ... additional parameters of function [boot_optimism]
+#' @param ... additional parameters of function [boot_optimism()]
 #' 
 #' @details
 #' 
-#' Function [boc] obtains a multivariable regression model with 
+#' Function [boc()] obtains a multivariable regression model with 
 #' bootstrap-based optimism correction on the dichotomized predictors.
 #' Specifically,
 #' 
@@ -42,7 +42,7 @@
 #' 
 #' 
 #' @returns 
-#' Function [boc] returns a regression model.
+#' Function [boc()] returns a regression model.
 #' 
 #' @examples 
 #' library(survival)
@@ -83,7 +83,7 @@
 #' 
 #' @name boc
 #' @export
-boc <- function(object, ...) UseMethod('boc')
+boc <- function(object, ...) UseMethod(generic = 'boc')
 
 #' @rdname boc
 #' @importFrom matrixStats colMedians

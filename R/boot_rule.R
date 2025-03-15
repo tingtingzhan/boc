@@ -25,7 +25,7 @@
 #' }
 #' 
 #' @returns 
-#' Function [boot_rule.add_dummies] returns a \link[base]{length}-\eqn{R} \link[base]{list} 
+#' Function [boot_rule.add_dummies()] returns a \link[base]{length}-\eqn{R} \link[base]{list} 
 #' of `???`
 #'
 #' @references 
@@ -39,7 +39,7 @@
 #' 
 #' @name boot_rule
 #' @export
-boot_rule <- function(object, R, ...) UseMethod('boot_rule')
+boot_rule <- function(object, R, ...) UseMethod(generic = 'boot_rule')
 
 
 #' @rdname boot_rule
@@ -70,7 +70,8 @@ boot_rule.add_dummies <- function(
       # `rule` to be determined by `b_data`
     )
   })
-
+  
+  class(rules_bt) <- 'listof'
   return(rules_bt)
   
 }

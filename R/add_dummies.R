@@ -10,24 +10,26 @@
 #' 
 #' @param data (optional) \link[base]{data.frame}
 #' 
-#' @param rule ..
+#' @param rule a \link[stats]{listof} partitioning rules,
+#' default is the returned value of function [rpart1.()]
 #' 
 #' @param ... additional parameters, currently not in use
 #' 
 #' @details
 #' 
 #' First, obtain the dichotomizing rules \eqn{\mathbf{\mathcal{D}}} of predictors \eqn{x_1,\cdots,x_k} based on 
-#' response \eqn{y} (via \link[maxEff]{rpart1}).
+#' response \eqn{y} (via function [rpart1.()]).
 #' 
-#' Then, \link[stats]{update} previous multivariable regression `start.model` 
+#' Then, \link[stats]{update} the starting multivariable regression `start.model` 
 #' with dichotomized predictors \eqn{\left(\tilde{x}_1,\cdots,\tilde{x}_k\right) = \mathcal{D}\left(x_1,\cdots,x_k\right)}. 
 #' 
 #' @returns
-#' Function [add_dummies] returns an object of class `'add_dummies'`.
+#' Function [add_dummies()] returns an object of class `'add_dummies'`.
 # \item{`attr(,'rule')`}{a \link[base]{list} of dichotomizing rules [rpart1] for the \eqn{k} predictors}
 #' 
 #' @note
-#' Different from `?maxEff::add_dummy`.  Function [add_dummies] adds *multiple* dichotomized predictors.
+#' Different from function \link[maxEff]{add_dummy}, 
+#' function [add_dummies()] adds *multiple* dichotomized predictors.
 #' 
 #' @examples
 #' # see ?boc
@@ -118,7 +120,7 @@ add_dummies <- function(
 #' ..
 #' 
 #' @returns
-#' Function [print.add_dummies] does not have a returned value
+#' Function [print.add_dummies()] does not have a returned value
 #' 
 #' @keywords internal
 #' @export print.add_dummies
@@ -145,23 +147,25 @@ print.add_dummies <- function(x, ...) {
 
 
 
-#' @title Batch Operation of Function [rpart1]
+#' @title Batch Operation of Function [rpart1()]
 #' 
 #' @param X \link[base]{data.frame} or \link[base]{list}
 #' 
 #' @param mc.cores \link[base]{integer} scalar, see function \link[parallel]{mclapply}
 #' 
-#' @param ... additional parameters of function [rpart1]
+#' @param ... additional parameters of function [rpart1()]
 #' 
 #' @returns 
-#' Function [rpart1.] returns a \link[base]{list} of [rpart1] returns.
+#' Function [rpart1.()] returns a \link[stats]{listof} function [rpart1()] returns.
 #' 
 #' @keywords internal
 #' @importFrom parallel mclapply detectCores
 #' @importFrom maxEff rpart1
 #' @export
 rpart1. <- function(X, mc.cores = switch(.Platform$OS.type, windows = 1L, detectCores()), ...) {
-  mclapply(X, mc.cores = mc.cores, FUN = function(x) rpart1(x = x, ...))
+  ret <- mclapply(X, mc.cores = mc.cores, FUN = function(x) rpart1(x = x, ...))
+  class(ret) <- 'listof'
+  return(ret)
 }
 
 

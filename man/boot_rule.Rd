@@ -25,7 +25,7 @@ number of bootstrap replicates \eqn{R}}
 \item{mc.cores}{\link[base]{integer} scalar, see function \link[parallel]{mclapply}}
 }
 \value{
-Function \link{boot_rule.add_dummies} returns a \link[base]{length}-\eqn{R} \link[base]{list}
+Function \code{\link[=boot_rule.add_dummies]{boot_rule.add_dummies()}} returns a \link[base]{length}-\eqn{R} \link[base]{list}
 of \verb{???}
 }
 \description{
