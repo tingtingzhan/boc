@@ -65,7 +65,7 @@ add_dummies <- function(
     X <- X[-old_na, , drop = FALSE]
   }
   
-  X. <- mapply(FUN = function(f, x) f(x), f = rule, x = X[names(rule)], SIMPLIFY = FALSE)
+  X. <- mapply(FUN = \(f, x) f(x), f = rule, x = X[names(rule)], SIMPLIFY = FALSE)
   
   # identify duplicated elements in `X.`
   dupX <- duplicated.default(X.)
@@ -129,7 +129,7 @@ print.add_dummies <- function(x, ...) {
   
   x0 <- unclass(x)
   xnm <- names(x)
-  mapply(FUN = function(x0, xnm) {
+  mapply(FUN = \(x0, xnm) {
     cat('\nDichotomizing Rule for', sQuote(xnm), 'based on Recursive Partitioning:\n\n')
     print(unclass(x0))
   }, x0 = x0, xnm = xnm)
@@ -142,31 +142,6 @@ print.add_dummies <- function(x, ...) {
 
 }
 
-
-
-
-
-
-#' @title Batch Operation of Function [rpart1()]
-#' 
-#' @param X \link[base]{data.frame} or \link[base]{list}
-#' 
-#' @param mc.cores \link[base]{integer} scalar, see function \link[parallel]{mclapply}
-#' 
-#' @param ... additional parameters of function [rpart1()]
-#' 
-#' @returns 
-#' Function [rpart1.()] returns a \link[stats]{listof} function [rpart1()] returns.
-#' 
-#' @keywords internal
-#' @importFrom parallel mclapply detectCores
-#' @importFrom maxEff rpart1
-#' @export
-rpart1. <- function(X, mc.cores = switch(.Platform$OS.type, windows = 1L, detectCores()), ...) {
-  ret <- mclapply(X, mc.cores = mc.cores, FUN = function(x) rpart1(x = x, ...))
-  class(ret) <- 'listof'
-  return(ret)
-}
 
 
 

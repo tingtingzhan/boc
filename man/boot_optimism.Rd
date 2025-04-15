@@ -7,11 +7,7 @@
 \usage{
 boot_optimism(object, ...)
 
-\method{boot_optimism}{add_dummies}(
-  object,
-  mc.cores = switch(.Platform$OS.type, windows = 1L, detectCores()),
-  ...
-)
+\method{boot_optimism}{add_dummies}(object, mc.cores = getOption("mc.cores"), ...)
 }
 \arguments{
 \item{object}{the apparent model}

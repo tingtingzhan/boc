@@ -7,12 +7,7 @@
 \usage{
 boot_rule(object, R, ...)
 
-\method{boot_rule}{add_dummies}(
-  object,
-  R = 1000L,
-  mc.cores = switch(.Platform$OS.type, windows = 1L, detectCores()),
-  ...
-)
+\method{boot_rule}{add_dummies}(object, R = 1000L, mc.cores = getOption("mc.cores"), ...)
 }
 \arguments{
 \item{object}{the apparent model}
@@ -39,7 +34,7 @@ of the dichotomized predictors. Specifically,
 
 \item{\eqn{R} copies of bootstrap samples are generated. In the \eqn{j}-th bootstrap sample,
 \enumerate{
-\item{obtain the dichotomizing rules \eqn{\mathbf{\mathcal{D}}^{(j)}} of predictors \eqn{x_1^{(j)},\cdots,x_k^{(j)}} based on response \eqn{y^{(j)}} (via \link[maxEff]{rpart1})}
+\item{obtain the dichotomizing rules \eqn{\mathbf{\mathcal{D}}^{(j)}} of predictors \eqn{x_1^{(j)},\cdots,x_k^{(j)}} based on response \eqn{y^{(j)}} (via \link[maxEff]{node1})}
 }
 }
 

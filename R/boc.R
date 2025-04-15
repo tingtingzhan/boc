@@ -65,13 +65,13 @@
 #' m1 = m0 |>
 #'  add_dummies(formula = ~ kappa + lambda) 
 #' m1
-#' sapply(m1, FUN = get_cutoff) # invokes `maxEff::get_cutoff.rpart1`
+#' sapply(m1, FUN = get_cutoff) # invokes `maxEff::get_cutoff.node1`
 #' 
 #' set.seed(143); m2 = m1 |>
 #'  boot_rule(R = 30L) # small `R` to save CRAN check time
 #' stopifnot(length(m2) == 30L)
 #' m2[[1L]] # rule of 1st bootstrap
-#' do.call(rbind, args = lapply(m2, FUN = function(i) sapply(i, FUN = get_cutoff)))
+#' do.call(rbind, args = lapply(m2, FUN = \(i) sapply(i, FUN = get_cutoff)))
 #' 
 #' set.seed(143); m3 = m1 |>
 #'  boot_optimism(R = 30L)

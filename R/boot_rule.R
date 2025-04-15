@@ -18,7 +18,7 @@
 #' 
 #' \item{\eqn{R} copies of bootstrap samples are generated. In the \eqn{j}-th bootstrap sample,
 #' \enumerate{
-#' \item{obtain the dichotomizing rules \eqn{\mathbf{\mathcal{D}}^{(j)}} of predictors \eqn{x_1^{(j)},\cdots,x_k^{(j)}} based on response \eqn{y^{(j)}} (via \link[maxEff]{rpart1})}
+#' \item{obtain the dichotomizing rules \eqn{\mathbf{\mathcal{D}}^{(j)}} of predictors \eqn{x_1^{(j)},\cdots,x_k^{(j)}} based on response \eqn{y^{(j)}} (via \link[maxEff]{node1})}
 #' }
 #' }
 #' 
@@ -50,7 +50,7 @@ boot_rule <- function(object, R, ...) UseMethod(generic = 'boot_rule')
 boot_rule.add_dummies <- function(
     object, 
     R = 1e3L,
-    mc.cores = switch(.Platform$OS.type, windows = 1L, detectCores()),
+    mc.cores = getOption('mc.cores'),
     ...
 ) {
   
@@ -61,7 +61,7 @@ boot_rule.add_dummies <- function(
   
   b_ <- bootid(n = .row_names_info(data, type = 2L), R = R) # \eqn{R} copies of 'integer' vectors
   
-  rules_bt <- mclapply(b_, mc.cores = mc.cores, FUN = function(b) { # (b = b_[[1L]])
+  rules_bt <- mclapply(b_, mc.cores = mc.cores, FUN = \(b) { # (b = b_[[1L]])
     b_data <- data[b, , drop = FALSE]
     add_dummies(
       formula = fomd, 
