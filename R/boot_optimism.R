@@ -70,7 +70,8 @@ boot_optimism.add_dummies <- function(
   rules_bt <- boot_rule.add_dummies(object = object, mc.cores = mc.cores, ...)
   R <- length(rules_bt)
   
-  boot_cf_ <- lapply(rules_bt, FUN = attr, which = 'effsize', exact = TRUE)
+  boot_cf_ <- rules_bt |>
+    lapply(FUN = attr, which = 'effsize', exact = TRUE)
   boot_cf <- unlist(boot_cf_, use.names = FALSE)
   dim(boot_cf) <- c(length(boot_cf) / R, R)
   

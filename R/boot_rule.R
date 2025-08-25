@@ -50,17 +50,21 @@ boot_rule <- function(object, R, ...) UseMethod(generic = 'boot_rule')
 #' @export
 boot_rule.add_dummies <- function(
     object, 
-    R = 1e3L, # \eqn{R} copies of 'integer' vectors
+    R = 1e3L,
     mc.cores = getOption('mc.cores'),
     ...
 ) {
   
   # full data!
-  data <- eval(attr(object, which = 'data.name', exact = TRUE), envir = parent.frame())
-  fomd <- attr(object, which = 'formula', exact = TRUE)
-  start.model <- attr(object, which = 'start.model', exact = TRUE)
+  data <- object |>
+    attr(which = 'data.name', exact = TRUE) |>
+    eval(envir = parent.frame())
+  fomd <- object |>
+    attr(which = 'formula', exact = TRUE)
+  start.model <- object |>
+    attr(which = 'start.model', exact = TRUE)
   
-  rules_bt <- data |>
+  ret <- data |>
     .row_names_info(x = _, type = 2L) |>
     bootid(n = _, R = R) |>
     mclapply(mc.cores = mc.cores, FUN = \(b) {
@@ -69,12 +73,11 @@ boot_rule.add_dummies <- function(
         formula = fomd, 
         start.model = update(start.model, data = b_data), # smart!
         data = b_data
-        # `rule` to be determined by `b_data`
       )
     })
   
-  class(rules_bt) <- 'listof'
-  return(rules_bt)
+  class(ret) <- 'listof'
+  return(ret)
   
 }
 
