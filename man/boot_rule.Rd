@@ -49,3 +49,4 @@ Multivariable prognostic models: issues in developing models, evaluating
 assumptions and adequacy, and measuring and reducing errors.
 \doi{10.1002/(SICI)1097-0258(19960229)15:4<361::AID-SIM168>3.0.CO;2-4}
 }
+\keyword{internal}
