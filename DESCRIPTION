@@ -2,19 +2,20 @@ Package: boc
 Type: Package
 Title: Bootstrap Optimism Correction
 Version: 0.1.0
-Date: 2025-03-15
 Description: Bootstrap-based Optimism Correction.
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 License: GPL-2
-Depends: R (>= 4.4),
 Language: en-US
-Authors@R: c(person(given = 'Tingting', family = 'Zhan', role = c('aut',
-        'cre'), email = 'tingtingzhan@gmail.com', comment =
-        c(ORCID = '0000-0001-9971-4844')), person(given = 'Inna', family
-        = 'Chervoneva', role = c('aut'), email =
+Authors@R: c(person(given = 'Tingting', family = 'Zhan', role =
+        c('aut', 'cre'), email = 'tingtingzhan@gmail.com', comment =
+        c(ORCID = '0000-0001-9971-4844')), person(given = 'Inna',
+        family = 'Chervoneva', role = c('aut'), email =
         'Inna.Chervoneva@jefferson.edu', comment = c(ORCID =
         '0000-0002-9104-4505')))
+Depends: R (>= 4.5),
 Imports: parallel, matrixStats, maxEff, rpart
-Suggests: knitr, boot, survival, groupedHyperframe
+Suggests: knitr, quarto, rmarkdown, 
+    boot, survival
+VignetteBuilder: quarto

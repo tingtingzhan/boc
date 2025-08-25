@@ -74,7 +74,8 @@ boot_optimism.add_dummies <- function(
   boot_cf <- unlist(boot_cf_, use.names = FALSE)
   dim(boot_cf) <- c(length(boot_cf) / R, R)
   
-  test_cf_ <- mclapply(rules_bt, mc.cores = mc.cores, FUN = \(rule) {
+  test_cf_ <- rules_bt |>
+    mclapply(mc.cores = mc.cores, FUN = \(rule) {
     add_dummies(
       formula = fomd, start.model = start.model, data = data, 
       rule = rule # force `rule` !!!

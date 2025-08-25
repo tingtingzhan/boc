@@ -8,8 +8,6 @@
 #' 
 #' @param mc.cores \link[base]{integer} scalar, see function \link[parallel]{mclapply}
 #' 
-#' @param check_degeneracy,... additional parameters of function \link[maxEff]{node1}
-#' 
 #' @returns 
 #' Function [rpart1.()] returns a \link[stats]{listof} function \link[maxEff]{node1} returns.
 #' 
@@ -22,10 +20,10 @@ rpart1. <- function(
     X, 
     y,
     mc.cores = getOption('mc.cores'), 
-    check_degeneracy = TRUE,
     ...
 ) {
   
+  if (FALSE) {
   ret <- X |>
     mclapply(mc.cores = mc.cores, FUN = \(x) {
       rpart(
@@ -35,8 +33,25 @@ rpart1. <- function(
         maxdepth = 2L, # only the first node is needed
         ...
       ) |>
-        node1(check_degeneracy = check_degeneracy)
+        node1()
     }) 
+  }
+  
+  rp <- X |>
+    mclapply(mc.cores = mc.cores, FUN = \(x) {
+      rpart(
+        formula = y ~ x, 
+        cp = .Machine$double.eps, # to force a split even if the overall lack of fit is not decreased
+        maxdepth = 2L, # only the first node is needed
+        ...
+      )
+    }) 
+  
+  ret <- mapply(
+    FUN = node1, 
+    object = rp, 
+    nm = X |> names() |> lapply(FUN = as.symbol),
+    SIMPLIFY = FALSE)
   
   class(ret) <- 'listof'
   return(ret)

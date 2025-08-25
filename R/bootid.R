@@ -28,7 +28,9 @@
 bootid <- function(n, R) {
   ret <- sample.int(n = n, size = n * R, replace = TRUE)
   dim(ret) <- c(R, n)
-  ret <- lapply(seq_len(R), FUN = \(i) ret[i,])
+  ret <- R |>
+    seq_len() |>
+    lapply(FUN = \(i) ret[i,])
   class(ret) <- c('bootid', 'listof')
   return(ret)
 }

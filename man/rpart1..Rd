@@ -4,7 +4,7 @@
 \alias{rpart1.}
 \title{Batch Operation of Functions \link[rpart]{rpart} \link[maxEff]{node1}}
 \usage{
-rpart1.(X, y, mc.cores = getOption("mc.cores"), check_degeneracy = TRUE, ...)
+rpart1.(X, y, mc.cores = getOption("mc.cores"), ...)
 }
 \arguments{
 \item{X}{\link[base]{data.frame} or \link[base]{list}}
@@ -12,8 +12,6 @@ rpart1.(X, y, mc.cores = getOption("mc.cores"), check_degeneracy = TRUE, ...)
 \item{y}{\link[base]{vector}}
 
 \item{mc.cores}{\link[base]{integer} scalar, see function \link[parallel]{mclapply}}
-
-\item{check_degeneracy, ...}{additional parameters of function \link[maxEff]{node1}}
 }
 \value{
 Function \code{\link[=rpart1.]{rpart1.()}} returns a \link[stats]{listof} function \link[maxEff]{node1} returns.

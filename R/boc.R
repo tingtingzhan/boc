@@ -44,43 +44,7 @@
 #' @returns 
 #' Function [boc()] returns a regression model.
 #' 
-#' @examples 
-#' library(survival)
-#' data(flchain, package = 'survival') # see more details from ?survival::flchain
-#' flchain2 = flchain |> 
-#'  subset(subset = (futime > 0)) |> # required by ?rpart::rpart
-#'  subset(subset = (chapter == 'Circulatory')) |>
-#'  within.data.frame(expr = {
-#'   mgus = as.logical(mgus)
-#'   OS = Surv(futime, death)
-#'   chapter = futime = death = NULL
-#'  })
-#' dim(flchain2) # 742
-#'  
-#' library(maxEff) # for ?maxEff::get_cutoff
-#' (m0 = coxph(OS ~ age + creatinine, data = flchain2))
-#' nobs(m0) # 673, due to missingness in `creatinine`
-#' 
-#' # apparent model
-#' m1 = m0 |>
-#'  add_dummies(formula = ~ kappa + lambda) 
-#' m1
-#' sapply(m1, FUN = get_cutoff) # invokes `maxEff::get_cutoff.node1`
-#' 
-#' set.seed(143); m2 = m1 |>
-#'  boot_rule(R = 30L) # small `R` to save CRAN check time
-#' stopifnot(length(m2) == 30L)
-#' m2[[1L]] # rule of 1st bootstrap
-#' do.call(rbind, args = lapply(m2, FUN = \(i) sapply(i, FUN = get_cutoff)))
-#' 
-#' set.seed(143); m3 = m1 |>
-#'  boot_optimism(R = 30L)
-#' head(m3) # just a matrix
-#'  
-#' set.seed(143); m4 = m1 |>
-#'  boc(R = 30L)
-#' summary(m4)
-#' 
+#' @keywords internal
 #' @name boc
 #' @export
 boc <- function(object, ...) UseMethod(generic = 'boc')
