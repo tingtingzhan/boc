@@ -20,7 +20,7 @@ Each element is the length-\eqn{n} indices of each bootstrap sample.
 To generate a \link[stats]{listof} \link[boot]{boot}strap indices.
 }
 \examples{
-set.seed(1345); (bt1 = boot::boot(data = 1:10, statistic = function(data, ind) ind, R = 3L)[['t']])
+set.seed(1345); (bt1 = boot::boot(data = 1:10, statistic = \(data, ind) ind, R = 3L)[['t']])
 set.seed(1345); (bt2 = bootid(10L, R = 3L))
 stopifnot(identical(c(t(bt1)), unlist(bt2)))
 }

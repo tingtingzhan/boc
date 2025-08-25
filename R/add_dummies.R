@@ -78,7 +78,7 @@ add_dummies <- function(
   fom <- eval(call(
     name = '~', 
     quote(.), # lhs
-    Reduce(f = function(e1, e2) {
+    Reduce(f = \(e1, e2) {
       call(name = '+', e1, e2)
     }, c(list(quote(.)), lapply(nms, FUN = as.symbol)))
   )) # `. ~ . + x1 + x2 + x3`

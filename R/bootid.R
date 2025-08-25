@@ -20,7 +20,7 @@
 #' see more in functions `boot:::index.array` and `boot:::ordinary.array`.
 #' 
 #' @examples
-#' set.seed(1345); (bt1 = boot::boot(data = 1:10, statistic = function(data, ind) ind, R = 3L)[['t']])
+#' set.seed(1345); (bt1 = boot::boot(data = 1:10, statistic = \(data, ind) ind, R = 3L)[['t']])
 #' set.seed(1345); (bt2 = bootid(10L, R = 3L))
 #' stopifnot(identical(c(t(bt1)), unlist(bt2)))
 #' @keywords internal
