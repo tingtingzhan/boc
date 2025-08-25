@@ -63,14 +63,14 @@ boot_rule.add_dummies <- function(
     .row_names_info(x = _, type = 2L) |>
     bootid(n = _, R = R) |>
     mclapply(mc.cores = mc.cores, FUN = \(b) {
-    b_data <- data[b, , drop = FALSE]
-    add_dummies(
-      formula = fomd, 
-      start.model = update(start.model, data = b_data), # smart!
-      data = b_data
-      # `rule` to be determined by `b_data`
-    )
-  })
+      b_data <- data[b, , drop = FALSE]
+      add_dummies(
+        formula = fomd, 
+        start.model = update(start.model, data = b_data), # smart!
+        data = b_data
+        # `rule` to be determined by `b_data`
+      )
+    })
   
   class(rules_bt) <- 'listof'
   return(rules_bt)

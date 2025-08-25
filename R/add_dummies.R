@@ -11,14 +11,14 @@
 #' @param data (optional) \link[base]{data.frame}
 #' 
 #' @param rule a \link[stats]{listof} partitioning rules,
-#' default is the returned value of function [rpart1.()]
+#' default is the returned value of function [rpart_node1()]
 #' 
 #' @param ... additional parameters, currently not in use
 #' 
 #' @details
 #' 
 #' First, obtain the dichotomizing rules \eqn{\mathbf{\mathcal{D}}} of predictors \eqn{x_1,\cdots,x_k} based on 
-#' response \eqn{y} (via function [rpart1.()]).
+#' response \eqn{y} (via function [rpart_node1()]).
 #' 
 #' Then, \link[stats]{update} the starting multivariable regression `start.model` 
 #' with dichotomized predictors \eqn{\left(\tilde{x}_1,\cdots,\tilde{x}_k\right) = \mathcal{D}\left(x_1,\cdots,x_k\right)}. 
@@ -31,8 +31,7 @@
 #' Different from function \link[maxEff]{add_dummy}, 
 #' function [add_dummies()] adds *multiple* dichotomized predictors.
 #' 
-#' @examples
-#' # see ?boc
+#' @keywords internal
 #' @importFrom stats terms update model.frame.default na.pass
 #' @importFrom utils tail
 #' @export
@@ -40,7 +39,7 @@ add_dummies <- function(
     start.model, 
     formula, 
     data,
-    rule = rpart1.(y = data[[terms(start.model)[[2L]]]], X = X),
+    rule = rpart_node1(y = data[[terms(start.model)[[2L]]]], X = X),
     ...
 ) {
   

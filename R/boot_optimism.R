@@ -76,12 +76,12 @@ boot_optimism.add_dummies <- function(
   
   test_cf_ <- rules_bt |>
     mclapply(mc.cores = mc.cores, FUN = \(rule) {
-    add_dummies(
-      formula = fomd, start.model = start.model, data = data, 
-      rule = rule # force `rule` !!!
-    ) |>
-      attr(which = 'effsize', exact = TRUE)
-  })
+      add_dummies(
+        formula = fomd, start.model = start.model, data = data, 
+        rule = rule # force `rule` !!!
+      ) |>
+        attr(which = 'effsize', exact = TRUE)
+    })
   test_cf <- unlist(test_cf_, use.names = FALSE)
   dim(test_cf) <- c(length(test_cf) / R, R)
   
