@@ -57,7 +57,7 @@ add_dummies <- function(
   # then reduce `data` and `X` to match `start.model`
   y <- start.model$y
   if (!length(y)) stop('`start.model` response?')
-  if (length(y) != .row_names_info(data, type = 2L)) {
+  if (length(y) != nrow(data)) {
     old_na <- start.model$na.action
     if (!length(old_na)) stop('`start.model` `na.action` not available?')
     data <- data[-old_na, , drop = FALSE]

@@ -4,7 +4,7 @@ Title: Bootstrap Optimism Correction
 Version: 0.1.0
 Description: Bootstrap-based Optimism Correction.
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Encoding: UTF-8
 License: GPL-2
 Language: en-US
@@ -16,6 +16,4 @@ Authors@R: c(person(given = 'Tingting', family = 'Zhan', role =
         '0000-0002-9104-4505')))
 Depends: R (>= 4.5),
 Imports: parallel, matrixStats, maxEff, rpart
-Suggests: knitr, quarto, rmarkdown, 
-    boot, survival
-VignetteBuilder: quarto
+Suggests: boot, survival

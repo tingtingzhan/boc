@@ -65,7 +65,7 @@ boot_rule.add_dummies <- function(
     attr(which = 'start.model', exact = TRUE)
   
   ret <- data |>
-    .row_names_info(x = _, type = 2L) |>
+    nrow() |>
     bootid(n = _, R = R) |>
     mclapply(mc.cores = mc.cores, FUN = \(b) {
       b_data <- data[b, , drop = FALSE]
