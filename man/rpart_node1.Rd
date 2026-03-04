@@ -4,7 +4,7 @@
 \alias{rpart_node1}
 \title{Batch Operation of Functions \link[rpart]{rpart} and \link[maxEff]{node1}}
 \usage{
-rpart_node1(X, y, mc.cores = getOption("mc.cores"), ...)
+rpart_node1(X, y, mc.cores = detectCores(), ...)
 }
 \arguments{
 \item{X}{\link[base]{data.frame} or \link[base]{list}}

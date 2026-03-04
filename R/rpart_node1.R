@@ -21,7 +21,7 @@
 rpart_node1 <- function(
     X, 
     y,
-    mc.cores = getOption('mc.cores'), 
+    mc.cores = detectCores(), 
     ...
 ) {
   

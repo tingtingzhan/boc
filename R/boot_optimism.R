@@ -58,7 +58,7 @@ boot_optimism <- function(object, ...) UseMethod(generic = 'boot_optimism')
 #' @export
 boot_optimism.add_dummies <- function(
     object, 
-    mc.cores = getOption('mc.cores'),
+    mc.cores = detectCores(),
     ...
 ) {
   

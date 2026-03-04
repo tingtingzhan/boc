@@ -7,7 +7,7 @@
 \usage{
 boot_optimism(object, ...)
 
-\method{boot_optimism}{add_dummies}(object, mc.cores = getOption("mc.cores"), ...)
+\method{boot_optimism}{add_dummies}(object, mc.cores = detectCores(), ...)
 }
 \arguments{
 \item{object}{the apparent model}

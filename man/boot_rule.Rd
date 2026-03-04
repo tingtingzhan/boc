@@ -7,7 +7,7 @@
 \usage{
 boot_rule(object, R, ...)
 
-\method{boot_rule}{add_dummies}(object, R = 1000L, mc.cores = getOption("mc.cores"), ...)
+\method{boot_rule}{add_dummies}(object, R = 1000L, mc.cores = detectCores(), ...)
 }
 \arguments{
 \item{object}{the apparent model}

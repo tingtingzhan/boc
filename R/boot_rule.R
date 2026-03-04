@@ -51,7 +51,7 @@ boot_rule <- function(object, R, ...) UseMethod(generic = 'boot_rule')
 boot_rule.add_dummies <- function(
     object, 
     R = 1e3L,
-    mc.cores = getOption('mc.cores'),
+    mc.cores = detectCores(),
     ...
 ) {
   
